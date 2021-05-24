@@ -34,7 +34,7 @@ async def calc(ctx, x: float, fn: str, y: float):
 
 
 # make sure to create a token file (in real life use env variables)
-with open ("BOT_TOKEN.txt", "r") as token_file:
+with open("BOT_TOKEN.txt", "r") as token_file:
     TOKEN = token_file.read()
     print("Token file read and bot started!")
     bot.run(TOKEN)
