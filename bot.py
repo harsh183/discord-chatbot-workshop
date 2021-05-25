@@ -3,9 +3,9 @@ import random
 
 bot = commands.Bot(command_prefix='!')
 
-@bot.command(name="idea", help="Help you brainstorm an idea")
+@bot.command(name="idea", help="Get a side project idea")
 async def idea(ctx):
-    await ctx.send("Aaah I see you're stuck with the paralysis of having so many different things to choose from")
+    await ctx.send("Ideas are hard")
     await ctx.send("Worry not, I think you should...")
 
     topics = ['chat bot', 'cli', 'game', 'web bot', 'browser extention', 'api', 'web interface']
@@ -14,28 +14,22 @@ async def idea(ctx):
     idea = f'Create a new {random.choice(topics)} that helps with {random.choice(areas)}! :slight_smile:'
     await ctx.send(idea)
 
-@bot.command(name="calc", help="Perform 4 function calculator where fn is +, -, *, /")
+@bot.command(name="calc", help="Perform a calculation where fn is either +,-,*, or /")
 async def calc(ctx, x: float, fn: str, y: float):
-    answer = None
     if fn == '+':
-        answer = x + y
+        await ctx.send(x + y)
     elif fn == '-':
-        answer = x - y
+        await ctx.send(x - y)
     elif fn == '*':
-        answer = x * y
+        await ctx.send(x * y)
     elif fn == '/':
-        answer = x / y
+        await ctx.send(x / y)
     else:
-        await ctx.send("You didn't format it right!")
-        return
-
-    response = f"{x} {fn} {y} is {answer}"
-    await ctx.send(response)
-
+        await ctx.send("We only support 4 function operations")
 
 # make sure to create a token file (in real life use env variables)
 with open("BOT_TOKEN.txt", "r") as token_file:
     TOKEN = token_file.read()
-    print("Token file read and bot started!")
+    print("Token file read")
     bot.run(TOKEN)
     
